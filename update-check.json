@@ -1,6 +1,6 @@
 {
   "app":{
     "version":"0.0.2",
-    "files":["updates/app.asar"]
+    "files":["updates/resources.zip"]
   }
 }
