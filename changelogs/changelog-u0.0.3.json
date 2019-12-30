@@ -1,0 +1,62 @@
+{
+  "update":"0.0.3",
+  "type":"Beta",
+  "releaseDate":"December 30, 2019",
+  "added":[
+    {
+      "title":"Lyrics support",
+      "desc":"Lyrics are now supported for MP3 files",
+      "screenshots":["screenshots/lyrics-support-song.png","screenshots/lyrics-support-lyrics.png"],
+      "action":"<span class=\"action\">Double Click</span> on the song to see the lyrics.<br/><strong>Note:</strong> MP3 file must contain the lyrics within itself. Also, online lyrics search will only provide 30% of the lyrics (if found)"
+    },{
+      "title":"Change Profile picture",
+      "desc":"Users can now change their profile picture.<br/><strong>Note:</strong> Your friends will be able to see changes only after you both are online (at same time)",
+      "screenshots":["screenshots/profile-picture.png"],
+      "action":"<span class=\"action\">Click</span> on the profile picture and select an image from your computer.<br/><strong>Tip:</strong> Use square images. Otherwise image will be stretched in order to fill area."
+    },{
+      "title":"Local connections",
+      "desc":"Local connection can be hosted and joined in order to connect with other people without internet connection. <br/><strong>Note:</strong> You and other people must be on the same network.<br/><strong>Tip:</strong> You can use it to access songs on other devices.",
+      "screenshots":["screenshots/conn-connect.png","screenshots/conn-host.png","screenshots/conn-hosted.png"],
+      "action":"<span class=\"action\">Click</span> on the <strong>Connect</strong> option in <strong>App Menu</strong>"
+    },{
+      "title":"Request song",
+      "desc":"Users can now request the song that their friend is listening to.<br/><strong>Note:</strong> This feature is partially supported at the time. So, it might not work.",
+      "screenshots":["screenshots/request-song.png"],
+      "action":"<span class=\"action\">Click</span> on the <strong>Request song</strong> in <strong>friends tab</strong>."
+    },{
+      "title":"Request songs list",
+      "desc":"Users can now request the friend's songs list.<br/><strong>Note:</strong> This feature is partially supported at the time. So, it might not work.",
+      "screenshots":["screenshots/request-songs-list.png"],
+      "action":"<span class=\"action\">Click</span> on the <strong>Request songs list</strong> in <strong>friends tab</strong>."
+    },{
+      "title":"Dark Theme",
+      "desc":"Users can now switch to Dark theme",
+      "screenshots":["screenshots/themes-option.png","screenshots/themes-tab.png"],
+      "action":"<span class=\"action\">Click</span> on the <strong>Themes</strong> option in <strong>App Menu</strong> to change the theme."
+    },{
+      "title":"Keyboard shorcuts",
+      "desc":"Introducing shortcut keys for ease of access.",
+      "screenshots":[],
+      "action":"Currently supported key binds:<br/><span class=\"action\">F</span> - Toggle between adding and removing song to and from favorites list.<br/><span class=\"action\">E</span> - Toggle between adding and removing song to and from explicit list.<br/><span class=\"action\">L</span> - Show lyrics (if available).<br/><span class=\"action\">Space bar</span> - Toggle between play and pause.<br/><span class=\"action\">R</span> - Toggle between loop off, loop all and loop one."
+    },{
+      "title":"Context menu support",
+      "desc":"Songs support right click actions now. <strong>Note:</strong> This feature is partially supported at the time. So, options in the context menu might not work.",
+      "screenshots":["screenshots/context-menu.png"],
+      "action":"<span class=\"action\">Right Click</span> on the song to see the context menu."
+    },{
+      "title":"Changelog support",
+      "desc":"Changelogs makes it easier to know the changes made in the update.",
+      "screenshots":[],
+      "action":"<span class=\"action\">Click</span> on the <strong>App version</strong> in <strong>App Menu</strong> to view the current version's changelog."
+    }
+  ],
+  "removed":[
+    {
+      "title":"New Playlist option",
+      "desc":"New Playlist option removed from the <strong>App Menu</strong>. Users can still create new playlist using <strong>Context menu</strong>",
+      "screenshots":["screenshots/new-playlist-option.png"],
+      "action":""
+    }
+  ],
+  "upcoming":[]
+}

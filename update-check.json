@@ -1,6 +1,7 @@
 {
   "app":{
-    "version":"0.0.2",
-    "files":["updates/resources.zip"]
+    "version":"0.0.3",
+    "files":["updates/resources.zip"],
+    "changeLog":"changelogs/changelog-u0.0.3.json"
   }
 }
