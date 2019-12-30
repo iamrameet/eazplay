@@ -45,16 +45,21 @@
       "action":"<span class=\"action\">Right Click</span> on the song to see the context menu."
     },{
       "title":"Changelog support",
-      "desc":"Changelogs makes it easier to know the changes made in the update.",
+      "desc":"Changelogs makes it easier to know the changes made in the update. <strong>Note:</strong> You need an active internet connection to see images in changelog.",
       "screenshots":[],
       "action":"<span class=\"action\">Click</span> on the <strong>App version</strong> in <strong>App Menu</strong> to view the current version's changelog."
+    },{
+      "title":"Others",
+      "desc":"<strong>Note:</strong> Not all features are mentioned in this changelog.",
+      "screenshots":[],
+      "action":""
     }
   ],
   "removed":[
     {
       "title":"New Playlist option",
-      "desc":"New Playlist option removed from the <strong>App Menu</strong>. Users can still create new playlist using <strong>Context menu</strong>",
-      "screenshots":["screenshots/new-playlist-option.png"],
+      "desc":"New Playlist option has been removed from the <strong>App Menu</strong>. Users can still create new playlist using <strong>Context menu</strong>",
+      "screenshots":[],
       "action":""
     }
   ],
