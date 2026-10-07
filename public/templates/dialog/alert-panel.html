@@ -1,0 +1,130 @@
+<template id="alertPanelTemplate">
+  <link rel="stylesheet" href="../../styles/common.css"/>
+  <style>
+    html {
+      font-size: 16px;
+    }
+    *::selection {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    :host {
+      position: absolute;
+      top: 1.5rem;
+      right: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+      width: auto;
+      height: auto;
+      /* outline: 1px solid #f00; */
+      z-index: 100;
+    }
+    .header {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      padding-right: 1rem;
+    }
+    :host(.empty) .header {
+      display: none;
+    }
+    .header #clear-all-button {
+      padding: 0.8rem 1.2rem;
+      font-size: 14px;
+      font-weight: 500;
+      border: 0px solid #000;
+      border-radius: 1rem;
+      color: #888;
+      background-color: #fbfbfb;
+      outline: none;
+    }
+    .popup-container {
+      --border-highlight-width: .375rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      margin-right: 1rem;
+      max-width: 300px;
+      padding: .75rem .75rem .75rem 1.5rem;
+      border-radius: var(--border-highlight-width) .5rem .5rem var(--border-highlight-width);
+      border-left: var(--border-highlight-width) solid #666;
+      background-color: #f8f8f8;
+      box-shadow: 0px 0.2rem 0.8rem #4442;
+      transform: translateX(calc(100% + 1rem));
+      overflow: hidden;
+      animation: hide-modal 250ms ease-in 0s 1 forwards;
+    }
+    .popup-container:hover {
+      background-color: #fbfbfb;
+    }
+    @keyframes show-modal {
+      0% {
+        transform: translateX(calc(100% + 1rem));
+      }
+      60% {
+        transform: translateX(-20%);
+      }
+      100% {
+        transform: translateX(0%);
+      }
+    }
+    @keyframes hide-modal {
+      0% {
+        transform: translateX(0%);
+      }
+      40% {
+        transform: translateX(-20%);
+      }
+      100% {
+        transform: translateX(calc(100% + 1rem));
+      }
+    }
+    .popup-container.type-1 {
+      border-color: #3b3;
+    }
+    .popup-container.type-2 {
+      border-color: #d44;
+    }
+    .popup-container.visible {
+      animation-name: show-modal;
+    }
+    .popup-container .content {
+      font-size: 1rem;
+      color: #666;
+    }
+    .popup-container button.close {
+      display: flex;
+      flex-shrink: 0;
+      align-self: flex-start;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      color: #888;
+      border-radius: 50%;
+      font-size: 1rem;
+      opacity: 1;
+      outline: none;
+    }
+    .popup-container button.close svg {
+      width: 1.25em;
+      height: 1.25em;
+    }
+    .popup-container button.close:hover {
+      background-color: transparent;
+      color: #444;
+    }
+    .header #clear-all-button:focus-visible,
+    .popup-container button.close:focus-visible {
+      outline: 2px solid var(--primary-border);
+    }
+  </style>
+
+  <div class="header">
+    <button id="clear-all-button">Clear all</button>
+  </div>
+
+</template>

@@ -1,0 +1,72 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "button",
+      "attributes": [
+        {
+          "name": "is",
+          "values": [{ "name": "pane-navigator" }]
+        }
+      ]
+    },
+    {
+      "name": "nav-section",
+      "description": "NavigationSection element",
+      "attributes": [
+        {
+          "name": "header",
+          "description": "Whether to show section header or not",
+          "values": [{ "name": "on" }, { "name": "off" }]
+        },
+        {
+          "name": "header-title",
+          "description": "Tile of section in header"
+        }
+      ]
+    },
+    {
+      "name": "input-box",
+      "description": "InputBox element",
+      "attributes": [
+        {
+          "name": "type",
+          "description": "Type of InputBox",
+          "values": [ { "name": "text" }, { "name": "email" }, { "name": "password" }, { "name": "date" }, { "name": "file" } ]
+        },
+        {
+          "name": "multiple",
+          "description": "Whether to allow multiple items to be selected",
+          "values": [ { "name": "true" }, { "name": "false" } ]
+        },
+        {
+          "name": "kind",
+          "description": "Whether to allow either files or directories to be selected",
+          "values": [ { "name": "file" }, { "name": "directory" } ]
+        },
+        {
+          "name": "placeholder"
+        },
+        {
+          "name": "label",
+          "description": "Specifies whether to show or hide the label",
+          "values": [ { "name": "true" }, { "name": "false" } ]
+        },
+        {
+          "name": "icon-left",
+          "description": "Specifies whether to show or hide the left icon",
+          "values": [ { "name": "true" }, { "name": "false" } ]
+        },
+        {
+          "name": "icon-right",
+          "description": "Specifies whether to show or hide the right icon",
+          "values": [ { "name": "true" }, { "name": "false" } ]
+        }
+      ]
+    },
+    {
+      "name": "placeholder",
+      "attributes": []
+    }
+  ]
+}

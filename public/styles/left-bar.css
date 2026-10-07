@@ -1,0 +1,94 @@
+#left-bar {
+  flex-shrink: 0;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  width: 5rem;
+}
+
+#left-bar ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+#left-bar ul li {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 3.6rem;
+  cursor: pointer;
+  transition: 150ms ease-out all;
+  color: #888;
+}
+#left-bar ul.rounded-items li {
+  margin: 0px auto;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+}
+#left-bar ul li:hover {
+  background-color: #f8f8f8;
+  color: #444;
+}
+#left-bar ul li.active {
+  background-color: #fff;
+  color: #222;
+}
+
+#left-bar ul.rounded-items li button {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+#left-bar ul li .title {
+  position: absolute;
+  left: 100%;
+  margin-left: -1rem;
+  padding: 0.8rem 0px;
+  max-width: 0px;
+  border-radius: 0.5rem;
+  font-size: 0.8em;
+  background-color: #fcfcfccc;
+  color: #666;
+  box-shadow: 0px 0px 1rem #00000008;
+  overflow: hidden;
+  z-index: 2;
+  pointer-events: none;
+  transition: 150ms ease-out all;
+}
+#left-bar ul li:hover .title {
+  margin-left: 0.5rem;
+  padding: 0.8rem 1.2em;
+  max-width: 300px;
+}
+
+#left-bar ul li .icon {
+  transition: 150ms ease scale;
+}
+#left-bar ul li:active .icon {
+  --compress: 0.95em;
+}
+
+#left-bar ul li#logo .icon {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/icons/icon2.png");
+  background-size: 70%;
+  scale: 1;
+}
+
+#left-bar ul li.active .icon svg use.for-inactive,
+#left-bar ul li .icon svg use.for-active {
+  display: none;
+}
+
+#left-bar ul li .icon svg use.for-inactive,
+#left-bar ul li.active .icon svg use.for-active {
+  display: initial;
+}
+
+#right-bar {
+  flex-shrink: 0;
+  width: 10rem;
+}

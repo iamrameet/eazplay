@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  padding: 1em 1.2em;
+  background-color: transparent;
+  color: #333;
+  font-size: 1em;
+  border-radius: 0.9em;
+  border: 1px solid #eee;
+}
+:host input {
+  outline: none;
+}
+:host(:focus-within) {
+  outline: 2px solid #fdf;
+}

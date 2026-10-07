@@ -1,0 +1,44 @@
+li.download-item {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  list-style: none;
+  border-radius: 0.5rem;
+}
+
+li.download-item .column {
+  flex-grow: 1;
+  padding: 1rem 1.5rem;
+}
+li.download-item .column.auto {
+  flex-grow: 0;
+}
+li.download-item .column.fixed {
+  flex-grow: 0;
+  width: 10rem;
+}
+li.download-item .column.center {
+  text-align: center;
+}
+li.download-item .column.right {
+  text-align: right;
+}
+
+li.download-item .column progress {
+  height: 1.5rem;
+  accent-color: #666;
+}
+
+li.download-item .column.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+  padding: 0px;
+  width: 5rem;
+}
+
+li.download-item button.icon {
+  padding: 0.5rem;
+  font-size: 12px;
+}

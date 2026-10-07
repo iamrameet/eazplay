@@ -1,0 +1,285 @@
+<template id="iconInputTemplate">
+
+  <link rel="stylesheet" href="/templates/input/input.css"/>
+
+  <div class="part">
+    <slot></slot>
+  </div>
+  <div class="part">
+    <label for="email"></label>
+    <input type="text"/>
+  </div>
+
+</template>
+
+<template id="checkboxTemplate">
+
+  <link rel="stylesheet" href="/templates/input/checkbox.css"/>
+
+  <span id="box">
+    <svg viewBox="0 0 256 256">
+      <use class="checked" href="../../assets/icons/regular.svg#box-checked"/>
+      <use class="unchecked" href="../../assets/icons/regular.svg#box-unchecked"/>
+    </svg>
+  </span>
+  <label>
+    <slot></slot>
+  </label>
+
+</template>
+
+<template id="radioTemplate">
+
+  <link rel="stylesheet" href="checkbox.css"/>
+
+  <span id="box">
+    <svg viewBox="0 0 256 256">
+      <use class="checked" href="../../assets/icons/regular.svg#radio-checked"/>
+      <use class="unchecked" href="../../assets/icons/regular.svg#radio-unchecked"/>
+    </svg>
+  </span>
+  <label>
+    <slot></slot>
+  </label>
+
+</template>
+
+<template id="inputBoxTemplate">
+
+  <link rel="stylesheet" href="../../styles/common.css"/>
+  <link rel="stylesheet" href="input-common.css"/>
+
+  <style>
+    :host(:focus-within) {
+      /* outline: 2px solid orange;
+      outline-offset: -2px; */
+      background-color: #fff;
+    }
+    :host([icon-left=false]) {
+      padding-left: 1.25em !important;
+    }
+    :host([icon-right=false]) {
+      padding-right: 1.25em !important;
+    }
+    .input input {
+      max-width: 100%;
+      height: 100%;
+      color: #333;
+      background-color: #f8f8f8;
+      text-align: left;
+      border-radius: 0px;
+      border: none;
+      outline: none;
+    }
+    .icon-holder ::slotted(svg) {
+      width: 1.5em;
+      height: 1.5em;
+    }
+    :host([icon-left=false]) .icon-holder#iconHolderLeft,
+    :host([icon-right=false]) .icon-holder#iconHolderRight {
+      display: none;
+    }
+    #inputHolder {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 0;
+      flex-shrink: 1;
+      gap: 0.25rem;
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #inputHolder label {
+      line-height: 0.75em;
+      font-size: smaller;
+      color: #888;
+    }
+    :host([label=false]) #inputHolder label {
+      display: none;
+    }
+    #inputHolder input,
+    #inputHolder output {
+      width: 100%;
+      height: 100%;
+    }
+    #inputHolder input {
+      padding: 0px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+    #inputHolder output {
+      display: none;
+      width: 100%;
+      line-height: 1em;
+      overflow: hidden;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+    }
+    :host([type=file]) #inputHolder label {
+      font-size: 1em;
+    }
+    :host([type=file]) #inputHolder input {
+      position: absolute;
+      opacity: 0;
+      display: none;
+    }
+    :host([type=file]) #inputHolder output {
+      display: block;
+    }
+    :host([type=file]) #inputHolder input:not(:placeholder-shown)+output {
+      display: none;
+    }
+    :host([type=date]) #inputHolder input::-webkit-calendar-picker-indicator {
+      position: absolute;
+      top: 0.25rem;
+      right: 0.75rem;
+      width: 18px;
+      height: 18px;
+      opacity: 0.5;
+    }
+    :host([type=date]) #iconHolderRight {
+      display: none;
+    }
+  </style>
+
+  <div class="icon-holder" id="iconHolderLeft">
+    <slot name="icon-left">{{Left-Icon}}</slot>
+  </div>
+  <div id="inputHolder">
+    <label for="input">
+      <slot name="label">{{Label}}</slot>
+    </label>
+    <input type="text" id="input"/>
+    <output id="output">No files selected</output>
+  </div>
+  <div class="icon-holder" id="iconHolderRight">
+    <slot name="icon-right">{{Right-Icon}}</slot>
+  </div>
+
+</template>
+
+<template id="segmentedInputTemplate">
+
+  <style>
+    :host {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 2em;
+      padding: 1em;
+    }
+    :host([segment-style=joined]) {
+      gap: 0px;
+      align-self: center;
+      border-radius: 0.9em;
+      border: 2px solid #eee;
+      overflow: hidden;
+    }
+    :host([segment-style=joined]:focus-within) {
+      outline: 2px solid #ddd;
+    }
+    :host input {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3em;
+      height: 3em;
+      color: #333;
+      text-align: center;
+      border-radius: 0.9em;
+      border: 2px solid #eee;
+    }
+    :host([segment-style=joined]) input {
+      width: 100%;
+      border-radius: 0px;
+      border: none;
+      outline: none;
+    }
+    :host(:not([segment-style=joined])) input:focus {
+      outline: 2px solid #ddd;
+    }
+  </style>
+
+</template>
+
+<template id="selectTemplate">
+
+  <link rel="stylesheet" href="../../styles/common.css"/>
+  <link rel="stylesheet" href="input-common.css"/>
+
+  <style>
+    :host {
+      align-items: center;
+      width: unset;
+      height: 3rem;
+      align-self: flex-start;
+      overflow: visible;
+    }
+    :host(:focus) {
+      outline: 2px solid orange;
+      outline-offset: -2px;
+    }
+    :host(:hover) {
+      background-color: #fbfbfb;
+    }
+    .icon-holder {
+      width: 2rem;
+    }
+    .icon-holder svg {
+      width: 1rem;
+      height: 1rem;
+      rotate: 0deg;
+      transition: 250ms ease rotate;
+    }
+    :host(:focus-within) .icon-holder svg {
+      rotate: 180deg;
+    }
+    label {
+      padding-left: 0.75rem;
+      line-height: 1em;
+      height: 1em;
+    }
+    #items {
+      position: absolute;
+      top: 100%;
+      left: 0px;
+      display: none;
+      margin-top: -0.25rem;
+      width: 100%;
+      max-height: 500%;
+      background-color: inherit;
+      border: 1px solid #f0f0f0;
+      border-radius: inherit;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      background-color: #f8f8f8;
+      box-shadow: 0px 0.25rem 0.5rem #2222;
+      overflow: hidden overlay;
+      scrollbar-gutter: stable;
+    }
+    :host(:focus-within) #items {
+      display: block;
+    }
+    #items ::slotted(option) {
+      padding: 0.5rem 0.75rem !important;
+      color: #666;
+      cursor: default;
+    }
+    #items ::slotted(option:hover) {
+      background-color: #fff;
+    }
+  </style>
+  <label id="label"></label>
+  <div class="icon-holder">
+    <svg viewBox="0 0 256 256">
+      <use href="../../assets/icons/regular.svg#caret-down"/>
+    </svg>
+  </div>
+  <div id="items">
+    <slot id="itemsSlot"></slot>
+  </div>
+</template>

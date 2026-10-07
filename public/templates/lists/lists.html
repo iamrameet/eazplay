@@ -1,0 +1,97 @@
+<template id="dataList">
+  <style>
+    :host {
+      padding: 1rem 2.5rem !important;
+      overflow: auto;
+    }
+    #items {
+      position: relative;
+      flex-shrink: 0;
+      width: 100%;
+      height: auto;
+    }
+    #placeholder {
+      display: none;
+      width: 100%;
+      height: 100%;
+      /* transition: all 1s linear; */
+      background-color: #f00;
+    }
+  </style>
+  <div id="items">
+    <div id="placeholder"></div>
+    <slot></slot>
+  </div>
+</template>
+
+<template id="listItem">
+  <link rel="stylesheet" href="/styles/common.css"/>
+  <link rel="stylesheet" href="list-item.css"/>
+
+  <div class="column image play-or-pause">
+    <img src="../../assets/images/default-art.png" alt="album art" id="albumArt"/>
+    <button class="control icon" id="togglePlayback">
+      <svg viewBox="0 0 256 256">
+        <use class="for-paused" href="../../assets/icons/regular.svg#resume"/>
+        <use class="for-playing" href="../../assets/icons/filled.svg#pause"/>
+        <use class="for-ended" href="../../assets/icons/filled.svg#play"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="column image">
+    <button class="control icon" id="toggleExplicit">
+      <svg viewBox="0 0 24 24">
+        <use class="for-inactive" href="../../assets/icons/regular.svg#explicit"/>
+        <use class="for-active" href="../../assets/icons/filled.svg#explicit"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="column info">
+    <div class="title clip-text">
+      <svg viewBox="0 -960 960 960">
+        <use href="../../assets/icons/filled.svg#hq"/>
+      </svg>
+      <slot name="title">{{Title}}</slot>
+    </div>
+    <div class="artist clip-text">
+      <slot name="artist">{{Artist}}</slot>
+    </div>
+  </div>
+
+  <div class="column album clip-text">
+    <slot name="album">{{Album}}</slot>
+  </div>
+
+  <div class="column duration clip-text">
+    <slot name="duration">{{Duration}}</slot>
+  </div>
+
+  <div class="column image">
+    <button class="control icon" id="spotifyButton">
+      <svg viewBox="0 0 256 256">
+        <use href="../../assets/icons/filled.svg#spotify"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="column image">
+    <button class="control icon" id="downloadButton">
+      <svg viewBox="0 0 256 256">
+        <use class="for-idle" href="../../assets/icons/filled.svg#download"/>
+        <use class="for-progress" href="../../assets/icons/regular.svg#spinner"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="column image">
+    <button class="control icon" id="toggleLike">
+      <svg viewBox="0 0 256 256">
+        <use class="for-inactive" href="../../assets/icons/regular.svg#liked"/>
+        <use class="for-active" href="../../assets/icons/filled.svg#liked"/>
+      </svg>
+    </button>
+  </div>
+
+</template>

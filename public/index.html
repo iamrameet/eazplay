@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ app.title }}</title>
+  <link rel="preload" as="style" href="templates/lists/list-item.css"/>
+  <link rel="stylesheet" href="templates/lists/download-item.css"/>
+  <link rel="stylesheet" href="styles/font.css"/>
+  <link rel="stylesheet" href="styles/common.css"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+  <link rel="stylesheet" href="styles/menu.css"/>
+  <link rel="stylesheet" href="styles/left-bar.css"/>
+  <link rel="stylesheet" href="styles/main-section.css"/>
+  <script type="module" src="modules/eazuse.js"></script>
+  <script type="module" src="scripts/main.js"></script>
+</head>
+<body class="container">
+  <title-bar id="title-bar" minimize="false" restore="false"></title-bar>
+
+  <main class="container row w-fill h-fill">
+
+    <section class="container h-fill" id="left-bar">
+
+      <ul>
+        <li id="logo">
+          <div class="icon bg"></div>
+          <div class="title">EazPlay</div>
+        </li>
+      </ul>
+
+      <ul>
+
+        <li>
+          <button is="pane-navigator" pane-parent="mainSection" pane="dashboard" class="w-fill h-fill icon">
+            <svg viewBox="0 0 256 256">
+              <use class="for-inactive" href="assets/icons/regular.svg#home"></use>
+              <use class="for-active" href="assets/icons/filled.svg#home"></use>
+            </svg>
+          </button>
+          <div class="title">Home</div>
+        </li>
+
+        <li>
+          <button is="pane-navigator" pane-parent="mainSection" pane="songs" class="w-fill h-fill icon">
+            <svg viewBox="0 0 256 256">
+              <use class="for-inactive" href="assets/icons/regular.svg#song"></use>
+              <use class="for-active" href="assets/icons/filled.svg#song"></use>
+            </svg>
+          </button>
+          <div class="title">Songs</div>
+        </li>
+
+        <li>
+          <button is="pane-navigator" pane-parent="mainSection" pane="albums" class="w-fill h-fill icon">
+            <svg viewBox="0 0 256 256">
+              <use class="for-inactive" href="assets/icons/regular.svg#album"></use>
+              <use class="for-active" href="assets/icons/filled.svg#album"></use>
+            </svg>
+          </button>
+          <div class="title">Albums</div>
+        </li>
+
+        <li>
+          <button is="pane-navigator" pane-parent="mainSection" pane="artists" class="w-fill h-fill icon">
+            <svg viewBox="0 0 256 256">
+              <use class="for-inactive" href="assets/icons/regular.svg#artist"></use>
+              <use class="for-active" href="assets/icons/filled.svg#artist"></use>
+            </svg>
+          </button>
+          <div class="title">Artists</div>
+        </li>
+
+        <li>
+          <button is="pane-navigator" pane-parent="mainSection" pane="liked" class="w-fill h-fill icon">
+            <svg viewBox="0 0 256 256">
+              <use class="for-inactive" href="assets/icons/regular.svg#liked"></use>
+              <use class="for-active" href="assets/icons/filled.svg#liked"></use>
+            </svg>
+          </button>
+          <div class="title">Liked</div>
+        </li>
+
+      </ul>
+
+      <ul class="rounded-items">
+
+        <li>
+          <button class="w-fill h-fill icon">
+            <svg viewBox="0 0 256 256">
+              <use class="for-inactive" href="assets/icons/regular.svg#notification"></use>
+              <use class="for-active" href="assets/icons/filled.svg#notification"></use>
+            </svg>
+          </button>
+          <div class="title">Notifications</div>
+        </li>
+
+        <li>
+          <button is="pane-navigator" pane-parent="mainSection" pane="settings" class="w-fill h-fill icon">
+            <svg viewBox="0 0 256 256">
+              <use class="for-inactive" href="assets/icons/regular.svg#settings"></use>
+              <use class="for-active" href="assets/icons/filled.svg#settings"></use>
+            </svg>
+          </button>
+          <div class="title">Settings</div>
+        </li>
+
+      </ul>
+
+    </section>
+
+    <section class="container w-fill h-fill" id="right-section">
+
+      <div class="container row w-fill middle-area">
+
+        <panes-manager class="container w-fill h-fill" id="mainSection">
+
+          <pane-option name="dashboard">
+
+            <div class="header">
+              <div class="icon">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#home"/>
+                </svg>
+              </div>
+              <h1>Dashboard</h1>
+            </div>
+
+            <cards-area>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+            </cards-area>
+
+            <cards-area>
+              <span slot="title">Recently Added</span>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+            </cards-area>
+
+            <cards-area>
+              <span slot="title">Favorites</span>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+            </cards-area>
+
+            <cards-area>
+              <span slot="title">Most Played</span>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+              <card-element slot="card"></card-element>
+            </cards-area>
+
+          </pane-option>
+
+          <pane-option name="songs">
+
+            <div class="header">
+              <svg-icon href="assets/icons/filled.svg#song"></svg-icon>
+              <h1>Songs</h1>
+              <form id="songsSearchForm" method="get" action="#" class="group auto-left gap-05">
+                <input-box type="text" name="query" id="songsSearchInput" label="false" icon-left="false" disabled="disabled" submit-delay="300">
+                  <button slot="icon-right" type="submit" class="icon">
+                    <svg-icon class="normal" href="assets/icons/regular.svg#search"></svg-icon>
+                  </button>
+                </input-box>
+                <button type="button" class="icon">
+                  <svg-icon class="normal" href="assets/icons/regular.svg#filter"></svg-icon>
+                </button>
+              </form>
+            </div>
+
+            <div class="body">
+              <data-list id="songsList" channel-name="data:getTracks"></data-list>
+            </div>
+
+          </pane-option>
+
+          <pane-option name="albums">
+
+            <div class="header">
+              <div class="icon">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#album"/>
+                </svg>
+              </div>
+              <h1>Albums</h1>
+            </div>
+
+            <cards-area id="albumsList" wrap="true">
+              <span slot="title">All</span>
+            </cards-area>
+
+          </pane-option>
+
+          <pane-option name="artists">
+
+            <div class="header">
+              <div class="icon">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#artist"/>
+                </svg>
+              </div>
+              <h1>Artists</h1>
+            </div>
+
+            <cards-area hidden>
+              <span slot="title">Most Played</span>
+              <card-element slot="card" size="large" wide="true"></card-element>
+              <card-element slot="card" size="large" wide="true"></card-element>
+            </cards-area>
+
+            <cards-area hidden>
+              <span slot="title">Recently Added</span>
+              <card-element slot="card" size="large"></card-element>
+              <card-element slot="card" size="large"></card-element>
+              <card-element slot="card" size="large"></card-element>
+            </cards-area>
+
+            <cards-area id="artistsList" wrap="true">
+              <span slot="title">All</span>
+            </cards-area>
+
+          </pane-option>
+
+          <pane-option name="liked">
+
+            <div class="header">
+              <div class="icon">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#liked"/>
+                </svg>
+              </div>
+              <h1>Liked songs</h1>
+              <form id="likedTracksSearchForm" method="get" action="#" class="group auto-left gap-05">
+                <input-box type="text" name="query" id="likedTracksSearchInput" label="false" icon-left="false" disabled="disabled" submit-delay="300">
+                  <button slot="icon-right" type="submit" class="icon">
+                    <svg-icon class="normal" href="assets/icons/regular.svg#search"></svg-icon>
+                  </button>
+                </input-box>
+              </form>
+            </div>
+
+            <div class="body">
+              <data-list id="likedTracks" channel-name="data:getLikedTracks"></data-list>
+            </div>
+
+          </pane-option>
+
+          <pane-option name="folders">
+            <div class="header">
+              <h1>Folders</h1>
+            </div>
+
+            <div class="container body">
+
+              <input-box type="file" id="addFolderInput" icon-right="false" kind="directory" multiple>
+                <span slot="label">Add folder</span>
+                <svg viewBox="0 0 256 256" slot="icon-left">
+                  <use href="assets/icons/regular.svg#circle-add"/>
+                </svg>
+              </input-box>
+
+              <br/>
+
+              <h5>Added Folders</h5>
+              <ul id="foldersList"></ul>
+
+            </div>
+
+            <div class="container pad">
+
+              <input-box type="email" placeholder="Enter your email address" label="false" icon-right="false">
+                <span slot="label">Email</span>
+                <svg viewBox="0 0 256 256" slot="icon-left">
+                  <use href="assets/icons/regular.svg#email"/>
+                </svg>
+              </input-box>
+
+              <input-box type="email" placeholder="Enter your email address" icon-right="false">
+                <span slot="label">Email</span>
+                <svg viewBox="0 0 256 256" slot="icon-left">
+                  <use href="assets/icons/regular.svg#email"/>
+                </svg>
+              </input-box>
+
+              <input-box type="date" placeholder="Enter your email address" icon-right="false">
+                <span slot="label">Birthday</span>
+                <svg viewBox="0 0 256 256" slot="icon-left">
+                  <use href="assets/icons/regular.svg#email"/>
+                </svg>
+              </input-box>
+
+              <ui-checkbox name="remember-me" id="remember-me" value="on"/>Remember me</ui-checkbox>
+              <ui-radio name="gender" value="male"/>Male</ui-radio>
+              <ui-radio name="gender" value="female"/>Female</ui-radio>
+
+              <ui-select id="list" placeholder="Select Option">
+                <option value="op1">Option 1</option>
+                <option value="op2">Option 2</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+                <option value="op3">Option 3</option>
+              </ui-select>
+
+              <button>Hello</button>
+            </div>
+          </pane-option>
+
+          <pane-option name="downloads">
+            <div class="header">
+              <div class="icon">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/filled.svg#download"/>
+                </svg>
+              </div>
+              <h1>Downloads</h1>
+            </div>
+
+            <div class="container body">
+
+              <!-- <input-box type="file" id="addFolderInput" icon-right="false" kind="directory" multiple>
+                <span slot="label">Add folder</span>
+                <svg viewBox="0 0 256 256" slot="icon-left">
+                  <use href="assets/icons/regular.svg#circle-add"/>
+                </svg>
+              </input-box> -->
+
+              <br/>
+
+              <h5>Active downloads</h5>
+              <br/>
+              <ul id="activeDownloadsList"></ul>
+
+            </div>
+
+            <div class="container pad">
+
+            </div>
+          </pane-option>
+
+          <pane-option name="themes">
+            <div class="header">
+              <h1>Themes</h1>
+            </div>
+          </pane-option>
+
+          <pane-option name="settings">
+            <div class="header">
+              <div class="icon">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#settings"/>
+                </svg>
+              </div>
+              <h1>Settings</h1>
+            </div>
+          </pane-option>
+
+          <pane-option name="album">
+
+            <div class="header">
+              <button is="pane-navigator" class="icon" type="button" pane-parent="mainSection" navigation="back" title="Go back">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#caret-left-bold"/>
+                </svg>
+              </button>
+              <svg-icon href="assets/icons/regular.svg#album"></svg-icon>
+              <h1>{{albumPane.title}}</h1>
+              <form id="albumTracksSearchForm" method="get" action="#" class="group auto-left gap-05">
+                <input-box type="text" name="query" id="albumTracksSearchInput" label="false" icon-left="false" disabled="disabled" submit-delay="300">
+                  <button slot="icon-right" type="submit" class="icon">
+                    <svg-icon class="normal" href="assets/icons/regular.svg#search"></svg-icon>
+                  </button>
+                </input-box>
+              </form>
+            </div>
+
+            <div class="body">
+
+              <h4>Songs</h4>
+              <br/>
+              <data-list id="albumTracksList" channel-name="data:getTracksByAlbum"></data-list>
+
+            </div>
+
+          </pane-option>
+
+          <pane-option name="artist">
+
+            <div class="header">
+              <button is="pane-navigator" class="icon" type="button" pane-parent="mainSection" navigation="back" title="Go back">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#caret-left-bold"/>
+                </svg>
+              </button>
+              <svg-icon href="assets/icons/regular.svg#artist"></svg-icon>
+              <h1>{{artistPane.name}}</h1>
+              <form id="artistTracksSearchForm" method="get" action="#" class="group auto-left gap-05">
+                <input-box type="text" name="query" id="artistTracksSearchInput" label="false" icon-left="false" disabled="disabled" submit-delay="300">
+                  <button slot="icon-right" type="submit" class="icon">
+                    <svg-icon class="normal" href="assets/icons/regular.svg#search"></svg-icon>
+                  </button>
+                </input-box>
+              </form>
+            </div>
+
+            <div class="body">
+
+              <h4>Releases</h4>
+              <br/>
+              <data-list id="artistReleases"></data-list>
+              <br/>
+              <h4>Songs</h4>
+              <br/>
+              <data-list id="artistTracksList" channel-name="data:getTracksByArtist"></data-list>
+
+            </div>
+
+          </pane-option>
+
+          <pane-option class="lyrics-pane" name="lyrics">
+
+            <div class="header">
+              <button is="pane-navigator" class="icon" type="button" pane-parent="mainSection" navigation="back" title="Go back">
+                <svg viewBox="0 0 256 256">
+                  <use href="assets/icons/regular.svg#caret-left-bold"/>
+                </svg>
+              </button>
+              <svg-icon href="assets/icons/regular.svg#lyrics"></svg-icon>
+              <h1>{{lyricsPane.title}}</h1>
+            </div>
+
+            <div class="body">
+
+              <div id="lyricsContainer"></div>
+
+            </div>
+
+          </pane-option>
+
+        </panes-manager>
+
+      </div>
+
+      <audio-player id="player" expandeds></audio-player>
+
+      <menu is="custom-menu" id="appMenu" type="toolbar" popover="auto">
+        <li id="folders">
+          <button is="pane-navigator" pane-parent="mainSection" pane="folders"><kbd>F</kbd>olders</button>
+        </li>
+        <li id="downloads">
+          <button is="pane-navigator" pane-parent="mainSection" pane="downloads"><kbd>D</kbd>ownloads</button>
+        </li>
+        <li id="themes">
+          <button is="pane-navigator" pane-parent="mainSection" pane="themes"><kbd>T</kbd>hemes</button>
+        </li>
+        <hr/>
+        <li id="exit">
+          <button>E<kbd>x</kbd>it</button>
+        </li>
+        <hr/>
+        <li>
+          <div class="text">v{{app.version}}</div>
+        </li>
+      </menu>
+
+      <alert-panel id="alertPanel"></alert-panel>
+
+    </section>
+
+    <section class="container h-fill" id="right-bar"></section>
+
+  </main>
+
+</body>
+</html>

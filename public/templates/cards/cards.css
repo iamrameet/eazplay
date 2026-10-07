@@ -1,0 +1,63 @@
+@import url("../../styles/common.css");
+
+.cards {
+  padding: 1em 2.5em;
+  gap: 0.5em;
+  width: 100%;
+}
+.cards .cards-header {
+  justify-content: space-between;
+}
+
+:host([wrap=true]) .cards .cards-header .actions {
+  display: none;
+}
+
+.cards .cards-header .actions button {
+  color: #444;
+}
+.cards .cards-header .actions button:disabled {
+  color: #aaa;
+}
+
+.cards .cards-util {
+  position: relative;
+  width: 100%;
+}
+.cards .cards-util::before,
+.cards .cards-util::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  width: 4em;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: 150ms linear opacity;
+}
+:host(:not([wrap=true])) .cards .cards-util::before {
+  left: -1.5em;
+  background-image: linear-gradient(to right, #f8f8f8 1.5em, transparent);
+}
+:host(:not([wrap=true])) .cards .cards-util::after {
+  right: -1.5em;
+  background-image: linear-gradient(to left, #f8f8f8 1.5em, transparent);
+}
+
+.cards.scrolled-left .cards-util::before,
+.cards.scrolled-right .cards-util::after {
+  opacity: 1;
+}
+
+.cards .cards-scroller {
+  padding: 1em 0em;
+  gap: 2em;
+  overflow: auto;
+}
+:host([wrap=true]) .cards .cards-scroller {
+  flex-wrap: wrap;
+}
+
+/* .cards .cards-scroller::-webkit-scrollbar {
+  display: none;
+} */

@@ -1,0 +1,16 @@
+<template id="downloadItemTemplate">
+
+  <output class="column" id="title">{{Title}}</output>
+  <output class="column fixed right" id="downloaded">{{Downloaded}}</output>
+  <div class="column auto">
+    <progress id="progress" value="0.7" max="1"></progress>
+  </div>
+  <output class="column fixed" id="size">{{Size}}</output>
+  <output class="column fixed" id="speed">{{Speed}}</output>
+  <div class="column action">
+    <button class="icon" id="cancelButton">
+      <svg-icon href="../../assets/icons/regular.svg#close"></svg-icon>
+    </button>
+  </div>
+
+</template>

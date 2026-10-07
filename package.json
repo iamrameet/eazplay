@@ -1,0 +1,28 @@
+{
+  "name": "eazplay",
+  "version": "1.0.0",
+  "description": "music player for local files",
+  "type": "module",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": {
+    "name": "Rameet Mashta",
+    "url": "https://github.com/iamrameet",
+    "email": "rameetmashta@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/iamrameet/eazplay"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "*"
+  },
+  "dependencies": {
+    "base32-encode": "^2.0.0",
+    "music-metadata": "^7.14.0",
+    "otplib": "^12.0.1",
+    "sqlite3": "^5.1.7"
+  }
+}

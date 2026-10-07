@@ -1,0 +1,95 @@
+<template id="cardsTemplate">
+
+  <link rel="stylesheet" href="cards.css"/>
+
+  <div class="cards scrolled-right" id="cards-holder">
+
+    <div class="container row w-fill cards-header">
+      <h5>
+        <slot name="title">{{Title}}</slot>
+      </h5>
+      <div class="container row actions">
+
+        <button class="icon" id="backward-button" title="Previous">
+          <svg viewBox="0 0 256 256">
+            <use href="../../assets/icons/filled.svg#caret-left"></use>
+          </svg>
+        </button>
+
+        <button class="icon" id="forward-button" title="Next">
+          <svg viewBox="0 0 256 256">
+            <use href="../../assets/icons/filled.svg#caret-right"></use>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <div class="cards-util">
+
+      <div class="container row w-fill cards-scroller" id="scrolling-area">
+        <slot name="card">{{Card}}</slot>
+      </div>
+
+    </div>
+
+  </div>
+</template>
+
+<template id="cardTemplate">
+  <style>
+    :host {
+      flex-shrink: 0;
+      width: 10em;
+      height: 10em;
+      border-radius: 1em;
+      background-color: #eee;
+    }
+    :host([wide=x]) {
+      width: 15em;
+    }
+    :host([wide=y]) {
+      height: 15em;
+    }
+    :host([grow]) {
+      flex-grow: 1;
+    }
+    :host(:hover) {
+      background-color: #ddd;
+    }
+
+    :host([size=large]) {
+      width: 15em;
+      height: 15em;
+    }
+    :host([size=large][wide=x]) {
+      width: 18em;
+    }
+    :host([size=large][wide=y]) {
+      height: 18em;
+    }
+
+    :host([size=x-large]) {
+      width: 20em;
+      height: 20em;
+    }
+    :host([size=x-large][wide=x]) {
+      width: 24em;
+    }
+    :host([size=x-large][wide=y]) {
+      height: 24em;
+    }
+
+    :host([size=small]) {
+      width: 6em;
+      height: 6em;
+    }
+    :host([size=small][wide=x]) {
+      width: 10em;
+    }
+    :host([size=small][wide=y]) {
+      height: 10em;
+    }
+  </style>
+  <slot></slot>
+</template>

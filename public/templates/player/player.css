@@ -1,0 +1,245 @@
+@import url("../../styles/common.css");
+
+/* * {
+  outline: 1px dashed #f005;
+} */
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0px 1rem !important;
+  width: 100%;
+  height: 8rem;
+  background-color: #fff;
+  transition: 200ms all linear;
+}
+
+:host([expanded]) {
+  flex-wrap: wrap;
+  padding: 1rem !important;
+  height: 100%;
+  border-radius: 1rem 0.5rem 0px 0px;
+  background-color: #f8f8f8;
+}
+
+:host .group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: 200ms all linear;
+}
+:host .group.right {
+  width: 100%;
+  /* height: 100%; */
+}
+:host .group.display {
+  position: absolute;
+  left: 52.5%;
+  width: 32.5%;
+  height: 4rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+:host([expanded]) .group {
+  justify-content: center;
+}
+:host([expanded]) .group.left {
+  flex-wrap: wrap;
+  width: 33%;
+}
+:host([expanded]) .group.display {
+  display: flex;
+  position: relative;
+  left: 0px;
+  flex-grow: 1;
+  width: auto;
+  height: auto;
+}
+
+:host([expanded]) .group.display,
+:host([show-lyrics]) .group.display {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+:host .album-art {
+  flex-shrink: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 1rem;
+  background-color: #eee;
+  overflow: hidden;
+  transition: 200ms all linear;
+}
+:host([expanded]) .album-art {
+  width: 18rem;
+  height: 18rem;
+}
+:host .album-art img {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+:host .info {
+  flex-shrink: 0;
+  gap: 0.5rem;
+  width: 15rem;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+:host([expanded]) .info {
+  width: 100%;
+}
+
+:host .info :is(.title, .artist) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+:host([expanded]) .info :is(.title, .artist) {
+  overflow: visible;
+  text-wrap: wrap;
+  text-align: center;
+  line-height: 1.5em;
+}
+:host .info .title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+:host([expanded]) .info .title {
+  font-size: 1.75rem;
+}
+:host .info .artist {
+  font-weight: 500;
+}
+:host([expanded]) .info .artist {
+  font-size: 1.25rem;
+}
+
+:host .player-controls {
+  align-items: center;
+  gap: 0.5rem;
+}
+:host .player-controls .control {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: #444;
+}
+:host .player-controls .control.bigger {
+  width: 4rem;
+  height: 4rem;
+  background-color: #333;
+  color: #eee;
+}
+
+:host .player-controls .control svg {
+  --compress: 0.85em;
+}
+
+:host .player-controls .control use {
+  transition: 150ms ease opacity;
+}
+
+:host .player-controls .control .for-active,
+:host .player-controls .control.active .for-inactive {
+  opacity: 0;
+}
+:host .player-controls .control.active .for-active,
+:host .player-controls .control .for-inactive {
+  opacity: 1;
+}
+
+#playbackControl use {
+  opacity: 0;
+}
+:host([playback-state=paused]) #playbackControl .for-paused,
+:host([playback-state=playing]) #playbackControl .for-playing,
+:host([playback-state=ended]) #playbackControl .for-ended {
+  opacity: 1;
+}
+
+:host .progress .duration {
+  flex-shrink: 0;
+  width: 4rem;
+  color: #888;
+  font-weight: 600;
+}
+
+:host([expanded]) #lyricsControl {
+  display: none;
+}
+
+:host .progress {
+  gap: 2em;
+  justify-content: space-between;
+  align-items: center;
+}
+:host([show-lyrics]) .progress canvas {
+  display: none;
+}
+:host([expanded]) .progress canvas {
+  display: initial;
+}
+
+#lyrics-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: 200ms all linear;
+}
+:host([expanded]) #lyrics-area {
+  height: 50vh;
+  background-color: #fbfbfb;
+  border-radius: 1rem;
+  overflow: auto;
+}
+
+#lyrics-area .line {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 0px;
+  min-width: 50%;
+  height: 100%;
+  font-size: 1.25rem;
+  line-height: 1.5em;
+  text-align: center;
+  transition: 150ms linear padding, 0s linear all;
+}
+#lyrics-area .line:hover {
+  background-color: #f0f0f0;
+}
+:host([expanded]) #lyrics-area .line {
+  flex-shrink: 1;
+  padding: 0.8rem 1.25rem;
+  width: auto;
+  height: unset;
+  line-height: 2em;
+  border-radius: 1rem;
+}
+#lyrics-area .line:empty::before {
+  content: "♪";
+}
+#lyrics-area .line.active {
+  width: 100%;
+  height: 100%;
+}
+:host([expanded]) #lyrics-area .line.active {
+  position: sticky;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 1.5rem;
+  color: #eee;
+  background-color: #333;
+  box-shadow: 0px 0px 1rem #6662;
+}

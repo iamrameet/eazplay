@@ -1,0 +1,124 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Inter";
+}
+
+main {
+  flex-shrink: 1;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+player-area {
+  flex: 0;
+  width: 100%;
+}
+
+#albumsList card-element {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #fbfbfb;
+  padding: 0rem;
+  width: 30%;
+  height: auto;
+}
+#albumsList card-element:hover {
+  background-color: #fff;
+  box-shadow: 0px 0px 1rem #8882;
+}
+
+#albumsList card-element .image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 0.75rem 0px 0px 0.75rem;
+  background-color: #dee;
+  overflow: hidden;
+}
+#albumsList card-element .image img {
+  position: absolute;
+  width: 100%;
+  /* max-height: 100%; */
+}
+#albumsList card-element .info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+#albumsList card-element .title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+#albumsList card-element .artist {
+  font-size: 1rem;
+  font-weight: 500;
+}
+#albumsList card-element .tracks {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#albumsList card-element .buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem;
+  width: calc(100% + 1rem);
+}
+#albumsList card-element .buttons button {
+  align-self: flex-end;
+  justify-self: flex-end;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  background-color: #fffd;
+  color: #222;
+}
+#albumsList card-element button.playback svg {
+  margin-left: -0.1em;
+}
+
+#artistsList card-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+}
+#artistsList card-element:hover {
+  background-color: #fff;
+}
+
+#artistsList card-element .image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: #dee;
+  overflow: hidden;
+}
+#artistsList card-element .image img {
+  min-width: 100%;
+  min-height: 100%;
+  /* max-height: 100%; */
+}
+#artistsList card-element .name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+}

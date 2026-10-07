@@ -1,0 +1,149 @@
+#right-section {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+#mainSection {
+  border-radius: 2rem 0.5rem 0.25rem 2rem;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  overflow-y: auto;
+}
+#mainSection pane-option {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  z-index: 1;
+}
+#mainSection pane-option:not([active]) {
+  position: absolute;
+  opacity: 0;
+  z-index: 0;
+}
+
+#mainSection .header {
+  position: sticky;
+  top: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5em;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #f0f0f0;
+  z-index: 1;
+}
+#mainSection .header .group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#mainSection .header .icon {
+  /* display: none; */
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  color: #888;
+}
+#mainSection .header :not(button).icon {
+  font-size: 2.5rem;
+}
+#mainSection .header .icon.normal {
+  font-size: 1.5rem;
+}
+#mainSection .header button.icon {
+  display: flex;
+}
+#mainSection .header button.icon:hover {
+  background-color: #fff;
+}
+
+#mainSection .header input-box {
+  width: 24rem;
+  border-color: transparent;
+}
+
+#mainSection .body {
+  /* padding: 0px 2.5em; */
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+}
+#mainSection .body h4 {
+  padding: 1.5rem 3.25rem 0px;
+}
+
+.middle-area {
+  position: relative;
+  flex: 1;
+  height: 0px;
+}
+
+data-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#appMenu {
+  top: 4rem;
+  left: 6rem;
+}
+
+#addFolderInput {
+  align-self: flex-start;
+  gap: 0px;
+  padding-right: 1rem !important;
+  width: 9.5em;
+  font-size: 1.25em;
+  line-height: 0.75em;
+}
+
+#foldersList {
+  list-style: decimal;
+  padding: 0.5rem 1.75rem;
+}
+#foldersList li {
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #444;
+}
+#foldersList li::marker {
+  color: #666;
+}
+#foldersList li:hover {
+  background-color: #fbfbfb;
+}
+
+.lyrics-pane .body {
+  overflow: auto;
+}
+#lyricsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#lyricsContainer .line {
+  padding: 1rem 2rem;
+  min-width: 50%;
+  font-size: 1.5rem;
+  text-align: center;
+  transition: 150ms linear padding, 0s linear all;
+}
+#lyricsContainer .line:empty::before {
+  content: "♪";
+}
+#lyricsContainer .line.active {
+  position: sticky;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  padding: 1.5rem 2rem;
+  color: #eee;
+  background-color: #333;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 1rem #6662;
+}

@@ -1,0 +1,11 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/.webmanifest"
+      ],
+      "url": "https://json.schemastore.org/web-manifest"
+    }
+  ],
+  "html.customData": ["./.vscode/html.html-data.json"],
+}

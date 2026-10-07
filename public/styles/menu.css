@@ -1,0 +1,45 @@
+menu[is=custom-menu] {
+  position: absolute;
+  list-style: none;
+  width: 220px;
+  border-radius: 1.25rem;
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.5rem #8882;
+  background-color: #fff;
+  overflow: hidden;
+  z-index: 1;
+}
+menu[is=custom-menu] li button {
+  padding: 0.8rem 1.5rem;
+  width: 100%;
+  text-align: left;
+  color: #444;
+  cursor: pointer;
+}
+menu[is=custom-menu] li:first-child button {
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+menu[is=custom-menu] li:last-child button {
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+}
+menu[is=custom-menu] li button:hover {
+  background-color: #fbfbfb;
+}
+menu[is=custom-menu] li button:active {
+  background-color: #f8f8f8;
+}
+menu[is=custom-menu] li kbd {
+  font-family: inherit;
+  text-decoration: underline;
+}
+menu[is=custom-menu] hr {
+  border: none;
+  border-bottom: 1px solid #f8f8f8;
+}
+menu[is=custom-menu] .text {
+  padding: 0.8rem 1.5rem;
+  color: #bbb;
+  font-size: smaller;
+}

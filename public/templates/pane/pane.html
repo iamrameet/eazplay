@@ -1,0 +1,41 @@
+<template id="panesTemplate">
+
+  <style>
+    :host {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+    }
+  </style>
+
+  <slot></slot>
+
+</template>
+
+<template id="paneTemplate">
+
+  <style>
+    :host {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 0px;
+      height: 100%;
+      opacity: 0;
+      transition: 300ms ease-in-out all, 150ms opacity;
+      overflow: hidden;
+    }
+    :host([active]) {
+      width: 100%;
+      opacity: 1;
+      overflow: auto;
+      transition: 300ms ease-in-out all, 300ms 150ms opacity;
+    }
+  </style>
+
+  <slot></slot>
+
+</template>

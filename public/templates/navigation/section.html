@@ -1,0 +1,29 @@
+<template id="sectionTemplate">
+
+  <link rel="stylesheet" href="/templates/navigation/section.css"/>
+
+  <header id="header">
+
+    <div class="left">
+      <slot name="head-left-icon" id="leftIconSlot"></slot>
+    </div>
+
+    <div class="center">
+      <slot name="title" id="titleSlot"></slot>
+    </div>
+
+    <div class="right">
+      <slot name="head-right-icon" id="rightIconSlot"></slot>
+    </div>
+
+  </header>
+
+  <div id="body">
+
+    <slot name="body"></slot>
+
+  </div>
+
+  <slot name="fixed-button"></slot>
+
+</template>

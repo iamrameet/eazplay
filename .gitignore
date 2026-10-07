@@ -1,0 +1,7 @@
+data/logs/*
+node_modules
+config/spotify.json
+*.db
+*.obj
+.vs/
+package-lock.json
