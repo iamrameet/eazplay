@@ -5,3 +5,4 @@ config/spotify.json
 *.obj
 .vs/
 package-lock.json
+yarn-error.log
