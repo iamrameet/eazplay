@@ -1,45 +1,67 @@
 /// <reference path="api.h.ts"/>
 
 import { net } from "electron";
+import { readFileSync } from "node:fs";
 import { joined } from "../common/util.js";
 import Logger from "../library/logger.js";
 import { TObject } from "../library/map.js";
 import FetchAPI from "./api.js";
-import { generateTotp } from "../common/totp.js";
+
+/** @returns {{ clientId: string; clientSecret: string }} */
+function loadCredentials() {
+  try {
+    const file = readFileSync(new URL("../config/spotify.json", import.meta.url), "utf-8");
+    const { clientId, clientSecret } = JSON.parse(file);
+    if(clientId && clientSecret) {
+      return { clientId, clientSecret };
+    }
+  } catch {}
+  throw new Error("Spotify credentials missing: copy config/spotify.example.json to config/spotify.json and fill it in");
+}
 
 export default class SpotifyAPI {
 
   static #logger = new Logger("SpotifyAPI");
   /** @type {string | undefined} */
   static #accessToken;
+  /** epoch ms after which the token must be refreshed */
+  static #accessTokenExpiresAt = 0;
   /** @type {FetchAPI<SpotifyAPIEndPointsMap>} */
   static #api = new FetchAPI("https://api.spotify.com/v1");
 
-  static async oauth() {}
-
   static async acquireAccessToken(force = false) {
-    if(this.#accessToken !== undefined && !force) {
+    if(this.#accessToken !== undefined && !force && Date.now() < this.#accessTokenExpiresAt) {
       return;
     }
     try {
-      const totp = await generateTotp();
-      this.#logger.error("Acquiring Spotify access token with TOTP:", totp);
-      const response = await net.fetch(`https://open.spotify.com/api/token?reason=init&productType=web-player&totp=${ totp }&totpServer=${ totp }&totpVer=21`);
-      /** @type {{ clientId: string; accessToken: string; accessTokenExpirationTimestampMs: string; isAnonymous: boolean; _notes: string } | { error: { code: number; message: string } }} */
-      const responseJSON = await response.json();
-      if(responseJSON.error) {
-        throw new Error(`Spotify access token response: ${ responseJSON.error.message }`);
+      const { clientId, clientSecret } = loadCredentials();
+      const response = await net.fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams({
+          grant_type: "client_credentials",
+          client_id: clientId,
+          client_secret: clientSecret
+        }).toString()
+      });
+      /** @type {{ access_token: string; expires_in: number } | { error: string; error_description?: string }} */
+      const json = await response.json();
+      if("error" in json) {
+        throw new Error(json.error_description ?? json.error);
       }
-      this.#accessToken = JSON.parse(responseJSON.accessToken);
+      this.#accessToken = json.access_token;
+      // refresh a minute early
+      this.#accessTokenExpiresAt = Date.now() + (json.expires_in - 60) * 1000;
       this.#api.setDefaultRequestInit({
         headers: {
           Authorization: `Bearer ${ this.#accessToken }`
         }
       });
     } catch(ex) {
-      this.#logger.error(ex);
-      throw ex;
-      throw new Error("unable to acquire access token");
+      this.#logger.error("Failed to get access token:", ex);
+      throw new Error(`Spotify API error: ${ ex.message }`);
     }
   }
 
@@ -47,13 +69,13 @@ export default class SpotifyAPI {
   static async getTracksByISRC(isrc) {
     const result = await this.#api.get("/search", {
       type: "track",
-      q: `isrc:${ isrc }`
+      q: `isrc:${isrc}`
     });
-    if(result.error) {
-      throw new Error(`Spotify API error: ${ result.error.message }`);
+    if (result.error) {
+      throw new Error(`Spotify API error: ${result.error.message}`);
     }
     this.#validateResponseResult(result);
-    if(result.tracks.items.length === 0) {
+    if (result.tracks.items.length === 0) {
       throw new Error("Track not available on Spotify");
     }
     return result.tracks.items;
@@ -68,23 +90,16 @@ export default class SpotifyAPI {
       q
     });
     this.#validateResponseResult(result);
-    if(result.tracks.items.length === 0) {
+    if (result.tracks.items.length === 0) {
       return null;
     }
     return result.tracks.items[0];
   }
 
   static #validateResponseResult(response) {
-    if(response.error) {
-      throw new Error(`Spotify API error: ${ response.error.message }`);
+    if (response.error) {
+      throw new Error(`Spotify API error: ${response.error.message}`);
     }
-  }
-
-  static totp() {
-    if(!this.#accessToken) {
-      throw new Error("Spotify access token not acquired");
-    }
-    return this.#accessToken.totp;
   }
 
 };

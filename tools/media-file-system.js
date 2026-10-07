@@ -6,7 +6,7 @@ import { nativeImage as NativeImage, net } from "electron";
 import path from "node:path";
 import { construct } from "../common/util.js";
 import { URL } from "node:url";
-import appConfig from "../config.json" assert { type: "json" };
+import appConfig from "../config.json" with { type: "json" };
 import Logger from "../library/logger.js";
 
 export default class MediaFileSystem {
@@ -298,10 +298,10 @@ export default class MediaFileSystem {
 
   /** @param {string} trackId */
   static async spotifyDownloadLink(trackId) {
-    const url = `https://api.spotifydown.com/download/${ trackId }`;
+    const url = `https://api.spotidownloader.com/download`;
     try {
       const response = await net.fetch(url, {
-        method: "GET",
+        method: "POST",
         headers: {
           'authority': 'api.spotifydown.com',
           'accept': '*/*',

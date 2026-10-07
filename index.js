@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { IPCController } from "./tools/ipc-controller.js";
 import Logger from "./library/logger.js";
 import ipcControllers from "./controllers/index.js";
-import config from "./config.json" assert { type: "json" };
+import config from "./config.json" with { type: "json" };
 import MediaFileSystem from "./tools/media-file-system.js";
 
 

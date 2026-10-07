@@ -13,7 +13,7 @@ export default class FetchAPI {
    * @param {RequestInit & { bypassCustomProtocolHandlers?: boolean; }} defaultRequestInit
    */
   constructor(base, defaultRequestInit) {
-    this.#base = base;
+    this.#base = new URL(base);
     this.#defaultRequestInit = defaultRequestInit;
   }
 
@@ -31,13 +31,13 @@ export default class FetchAPI {
    * @returns {Promise<ResultUsingParam<T, K, P>[keyof ResultUsingParam<T, K, P>]["result"]>}
    */
   async get(endpoint, searchParams = {}, requestInit = {}) {
-    const url = new URL(endpoint, this.#base);
+    const url = new URL(this.#base.pathname + endpoint, this.#base.origin);
     for(const param in searchParams) {
       if(typeof searchParams[param] === "string") {
         url.searchParams.set(param, searchParams[param]);
         continue;
       }
-      for(const value of searchParams) {
+      for(const value of searchParams[param]) {
         url.searchParams.append(param, value);
       }
     }
